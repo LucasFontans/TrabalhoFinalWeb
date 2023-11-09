@@ -3,16 +3,19 @@ function cadastrar(){
     var email = document.getElementById("email");
     var password = document.getElementById("password");
     var repassword = document.getElementById("repassword");
-    var cpf = document.getElementById("cpf");
-    const cpfRegex = /^\d{11}/;
+    //const cpfRegex = /^\d{11}/;
 
-    if(!cpfRegex.test(cpf.value)){
-        alert("Cpf invalido!");
-        return false;
-    }
+    //if(!cpfRegex.test(cpf.value)){
+    //    alert("Cpf invalido!");
+    //    return false;
+    //}
     if(login.value == "" || email.value == "" || password.value == "" || repassword.value == ""){
         alert("Digite todos os camapos!");
-        return false
+        return false;
     }
-    return true
+    if(!(password.value == repassword.value)){
+        alert("Senhas não conferem!");
+        return false;
+    }
+    return true;
 }
