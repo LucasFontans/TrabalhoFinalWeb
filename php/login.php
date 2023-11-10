@@ -1,4 +1,5 @@
 <?php
+$session_start();
     function logar(){
         $servername = "localhost";
         $database = "piquesdb";
@@ -17,6 +18,7 @@
         $result = $conn->query($query);
 
         if ($result->num_rows == 1) {
+            $_SESSION['userName'] = $nameUser;
             sleep(3);
             header("Location: ../paginas/dashboard.html");
         } else {
