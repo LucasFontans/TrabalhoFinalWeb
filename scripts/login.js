@@ -1,8 +1,8 @@
 function Logar() {
-    var login = document.getElementById("login");
+    var email = document.getElementById("email");
     var senha = document.getElementById("password");
 
-    if (login.value == "" || senha.value == "") {
+    if (email.value == "" || senha.value == "") {
         alert("Por favor, digite login e senha!");
         return false; 
     }

@@ -1,29 +1,43 @@
 <?php
-$session_start();
-    function logar(){
-        $servername = "localhost";
-        $database = "piquesdb";
-        $username = "root";
-        $password = "";
+session_start();
 
-        $nameUser = $_POST["login"];
-        $senha = $_POST["password"];
-        
-        $conn = mysqli_connect($servername, $username, $password, $database);
+function logar(){
+    $servername = "localhost";
+    $database = "piquesdb";
+    $username = "root";
+    $password = "";
 
-        $nameUser = mysqli_real_escape_string($conn, $nameUser);
-        $senha = mysqli_real_escape_string($conn, $senha);
+    $email = $_POST["email"];
+    $senha = $_POST["password"];
+    $nameUser;
 
-        $query = "SELECT * FROM usuarios WHERE nomeUsuario = '$nameUser' AND senha = '$senha'";
-        $result = $conn->query($query);
+    $conn = mysqli_connect($servername, $username, $password, $database);
 
-        if ($result->num_rows == 1) {
-            $_SESSION['userName'] = $nameUser;
-            sleep(3);
-            header("Location: ../paginas/dashboard.html");
-        } else {
-            echo "<script>alert('Login ou senha inválidos!'); window.location.href = '../paginas/login.html';</script>";
-        }
+    $email = mysqli_real_escape_string($conn, $email);
+    $senha = mysqli_real_escape_string($conn, $senha);
+
+    $query2 = "SELECT nomeUsuario FROM usuarios WHERE email = '$email'";
+    $result2 = $conn->query($query2);
+
+    if ($result2->num_rows == 1) {
+        $row = $result2->fetch_assoc();
+        $nameUser = $row['nomeUsuario'];
+    } else {
+        // Se não encontrar o usuário, você pode definir um valor padrão ou tomar outra ação, como redirecionar para a página de login
+        $nameUser = "Usuário não encontrado";
     }
-    logar();
+
+    $query = "SELECT * FROM usuarios WHERE email = '$email' AND senha = '$senha'";
+    $result = $conn->query($query);
+
+    if ($result->num_rows == 1) {
+        $_SESSION['userName'] = $nameUser;
+        sleep(3);
+        header("Location: ../php/dashboard.php");
+    } else {
+        echo "<script>alert('Login ou senha inválidos!'); window.location.href = '../paginas/login.html';</script>";
+    }
+}
+
+logar();
 ?>

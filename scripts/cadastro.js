@@ -19,3 +19,7 @@ function cadastrar(){
     }
     return true;
 }
+
+function cadastrarChave(){
+    
+}
