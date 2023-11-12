@@ -4,15 +4,18 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="../estilos/login.css">
-    <script src="../scripts/cadChave.js"></script>
-    <title>Piques Brasil</title>
+    <script src="../scripts/transferir.js"></script>
+    <title>Login Piques Brasil</title>
 </head>
 <body>
     <div class="form">
-        <h1>Cadastrar Chave</h1>
-        <form action="../php/cadastrarChave.php" method="post" onsubmit="return cadastrarChave()">
+        <h1>Transferência</h1>
+        <form action="../php/transferir.php" method="post" onsubmit="return transferir()">
             <div class="input-container">
-                <input type="text" name="chave" id="chave" placeholder="Chave">
+                <input type="text" name="chave" id="chave" placeholder="Chave PIX">
+            </div>
+            <div class="input-container">
+                <input type="text" name="valor" id="valor" placeholder="Valor">
             </div>
             <div class="input-radio">
                 <label for="cpf">CPF</label>
@@ -20,7 +23,7 @@
                 <label for="telefone">Celular</label>
                 <input type="radio" name="escolha" value="telefone" id="telefone">
             </div>
-            <input type="submit" value="Cadastrar Chave" id="submit">
+            <input type="submit" value="Transferir" id="submit">
         </form>
     </div>
 </body>

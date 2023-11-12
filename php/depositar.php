@@ -10,18 +10,18 @@ $valor = $_POST["valor"];
 
 $conn = mysqli_connect($servername, $username, $password, $database);
 
-// Use consultas preparadas para evitar injeção de SQL
-$query2 = "UPDATE usuarios SET saldo = $valor WHERE id = $id";
+$sql = "SELECT saldo FROM usuarios WHERE id = $id";
+$result = $conn->query($sql);
 
-// Executa a consulta diretamente
-if (mysqli_query($conn, $query2)) {
-    echo "<script>alert('Deposito realizado com sucesso!')</script>;";
-    sleep(3);
-    header("Location: ../php/dashboard.php");
+
+if ($result) {
+    $row = $result->fetch_assoc();
+    $saldo = $row['saldo'];
+    $saldo = $saldo + $valor;
+    $query2 = "UPDATE usuarios SET saldo = $saldo WHERE id = $id";
+    $result = $conn->query($query2);
+    echo "<script>alert('Deposito realizado com sucesso!'); window.location.href = '../php/dashboard.php';</script>";
 } else {
-    echo "Erro na atualização: " . mysqli_error($conn);
+    echo "Erro na consulta: " . $conn->error;
 }
-
-// Fecha a conexão
-mysqli_close($conn);
 ?>
