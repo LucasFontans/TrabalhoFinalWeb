@@ -7,7 +7,7 @@ $username = "root";
 $password = "";
 
 $chave = $_POST["chave"];
-$escolha = $_POST["escolha"];
+$escolha = isset($_POST['escolha']) ? $_POST['escolha'] : null;
 
 $conn = mysqli_connect($servername, $username, $password, $database);
 
