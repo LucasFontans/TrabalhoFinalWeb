@@ -1,10 +1,26 @@
 <?php
 session_start();
 // Verifica se a sessão foi iniciada
+
+$id = $_SESSION['id'];
+$servername = "localhost";
+$database = "piquesdb";
+$username = "root";
+$password = "";
+
+$conn = mysqli_connect($servername, $username, $password, $database);
+
+$sql = "SELECT saldo FROM usuarios WHERE id = $id";
+$result = $conn->query($sql);
+$row = $result->fetch_assoc();
+$saldo = $row['saldo'];
+
 if(isset($_SESSION['userName'])) {
     $saudacao = "Olá, " . $_SESSION['userName'] . "!";
+    $saldoUsuario = "Saldo: R$" . $saldo;
 } else {
     $saudacao = "";
+    $saldoUsuario = "";
 }
 ?>
 
@@ -22,7 +38,12 @@ if(isset($_SESSION['userName'])) {
         <h1>Piques Brasil</h1>
         
         <div id="saucacao">
-            <?php echo htmlspecialchars($saudacao); ?>
+            <?php 
+            echo htmlspecialchars($saudacao);
+            echo "<h6>";
+            echo htmlspecialchars($saldoUsuario);
+            echo "</h6>";
+            ?>
         </div>
         <a href="../paginas/Depositar.html">Depositar</a>
         <a href="../paginas/Sacar.html">Sacar</a>

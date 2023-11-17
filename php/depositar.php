@@ -14,14 +14,13 @@ $sql = "SELECT saldo FROM usuarios WHERE id = $id";
 $result = $conn->query($sql);
 
 
-if ($result) {
-    $row = $result->fetch_assoc();
-    $saldo = $row['saldo'];
-    $saldo = $saldo + $valor;
-    $query2 = "UPDATE usuarios SET saldo = $saldo WHERE id = $id";
-    $result = $conn->query($query2);
-    echo "<script>alert('Deposito realizado com sucesso!'); window.location.href = '../php/dashboard.php';</script>";
-} else {
+if (!($result)) {
     echo "Erro na consulta: " . $conn->error;
 }
+$row = $result->fetch_assoc();
+$saldo = $row['saldo'];
+$saldo = $saldo + $valor;
+$query2 = "UPDATE usuarios SET saldo = $saldo WHERE id = $id";
+$result = $conn->query($query2);
+echo "<script>alert('Deposito realizado com sucesso!'); window.location.href = '../php/dashboard.php';</script>";
 ?>
