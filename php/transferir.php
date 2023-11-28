@@ -39,6 +39,8 @@ $query2 = "UPDATE usuarios SET saldo = $saldo WHERE id = $id";
 $result = $conn->query($query2);
 $sql = "UPDATE usuarios SET saldo = $saldoPix WHERE $escolha = '$chave'";
 $result = $conn->query($sql);
+$sql = "INSERT INTO extrato(id, tipo, valor)VALUES($id, 'TRANSFERENCIA: $chave', -$valor);";
+$result = $conn->query($sql);
 $sql = "SELECT * FROM favoritos WHERE chave = '$escolha: $chave'";
 $result = $conn->query($sql);
 if($result->num_rows === 0){

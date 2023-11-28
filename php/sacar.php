@@ -24,6 +24,8 @@ if (!($valor <= $saldo)) {
 $saldo = $saldo - $valor;
 $query2 = "UPDATE usuarios SET saldo = $saldo WHERE id = $id";
 $result = $conn->query($query2);
+$sql = "INSERT INTO extrato(id, tipo, valor)VALUES($id, 'SAQUE', -$valor);";
+$result = $conn->query($sql);
 echo "<script>alert('Saque realizado com sucesso!'); window.location.href = '../php/dashboard.php';</script>";
 ?>
 

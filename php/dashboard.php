@@ -1,6 +1,6 @@
 <?php
 session_start();
-// Verifica se a sessão foi iniciada
+
 
 $id = $_SESSION['id'];
 $servername = "localhost";
@@ -47,10 +47,11 @@ if(isset($_SESSION['userName'])) {
         </div>
         <a href="../paginas/Depositar.html">Depositar</a>
         <a href="../paginas/Sacar.html">Sacar</a>
-        <a href="../paginas/Extrato.html">Extrato</a>
+        <a href="../php/Extrato.php">Extrato</a>
+        <a href="../php/chaves.php">Suas Chaves</a>
         <a href="../paginas/Transferencia.html">Transferencia</a>
         <a href="../paginas/CadChave.html">Cadastrar Chave</a>
-        <a href="../paginas/Favoritos.html">Favoritos</a>
+        <a href="../php/Favoritos.php">Favoritos</a>
     </div>
 </body>
 </html>

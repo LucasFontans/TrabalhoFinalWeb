@@ -25,7 +25,8 @@ h1{
 div{
   display: block;
   color: #fff;
-  font-size: 40px!important;  
+  font-size: 40px!important;
+  text-align: center;
 }
 
 a {
@@ -44,4 +45,7 @@ a {
   }
 a:hover {
   background: #0055a5;
+}
+table{
+  margin-left: 40px;
 }
