@@ -17,8 +17,8 @@ function cadastrarChave() {
         return false;
     }
 
-    if (escolha.value === "cpf" && !cpfRegex.test(chave)) {
-        alert("CPF inválido!");
+    if (escolha.value === "telefone" && !cpfRegex.test(chave)) {
+        alert("Telefone inválido. Formato: (DDD)x.xxxx-xxxx");
         return false;
     }
 
