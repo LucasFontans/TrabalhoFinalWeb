@@ -12,13 +12,13 @@ function cadastrarChave() {
         alert("Escolha uma opção!");
         return false;
     }
-    if (escolha === "cpf" && !cpfRegex.test(chave)) {
+    if (escolha.value === "cpf" && !cpfRegex.test(chave)) {
         alert("CPF inválido!");
         return false;
     }
 
-    if (escolha === "telefone" && !cpfRegex.test(chave)) {
-        alert("Telefone inválido. Formato: (DDD)x.xxxx-xxxx");
+    if (escolha.value === "cpf" && !cpfRegex.test(chave)) {
+        alert("CPF inválido!");
         return false;
     }
 
